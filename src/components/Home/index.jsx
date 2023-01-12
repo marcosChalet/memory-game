@@ -65,8 +65,7 @@ function Home() {
 
         const total = images.filter((img) => img.active).length
       
-        if (total === 12) {
-          console.log('12 cartas...');
+        if (total === 13) {
           setEndGame(true)
         }
         
