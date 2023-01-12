@@ -1,0 +1,25 @@
+:root {  
+  --color-black: #121010;
+  --color-black0: #000;
+  --color-white: #FFF;
+  --color-gray: #343434;
+  --color-blue: #0d61f3;
+  --light-color: #f2dede;
+
+  --primary-color: var(--color-black);
+  --text-color: var(--light-color);
+
+  --default-font-size: 18px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-size: var(--default-font-size);
+}

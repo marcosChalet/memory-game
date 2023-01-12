@@ -1,0 +1,22 @@
+.container {
+  max-width: 50rem;
+  margin: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5rem 0;
+}
+
+.container .title {
+  padding-bottom: 3rem;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
