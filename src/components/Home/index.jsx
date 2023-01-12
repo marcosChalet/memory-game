@@ -65,7 +65,7 @@ function Home() {
 
         const total = images.filter((img) => img.active).length
       
-        if (total === 13) {
+        if (total === 12) {
           setEndGame(true)
         }
         
