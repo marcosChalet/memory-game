@@ -14,6 +14,7 @@ function ModalEndGame({ children }) {
   
   function btnClick() {
     setModal('hide')
+    window.location.reload();
   }
 
   return (
