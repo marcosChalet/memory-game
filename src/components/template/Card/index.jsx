@@ -1,55 +1,22 @@
-import React from 'react'
-import { useState } from 'react'
-
 import './style.css'
+import { useState } from 'react'
 
 import coverImg from '../../../assets/linux.svg'
 
-function Card( { image, activeCard, setActiveCard } ) {
+function Card({ click, faceImgCard }) {
 
-  const [card, setCard] = useState({
-    img: coverImg,
-    classes: '',
-    active: false,
-    key: image.key,
-  })
-
-  const changeImage = _ => {
-    if (card.active === true || activeCard.totalActive === 2) {
-      return
-    }
-
-    card.active = true
-    image.active = true
-
-    let currActive = activeCard.totalActive + 1
-    let currCards = activeCard.cards
-    let keyCard = activeCard.keys
-    let images = activeCard.cardImage
-
-    currCards.push(setCard)
-    keyCard.push(image.key)
-    images.push(image.src)
-
-    setActiveCard({
-      totalActive: currActive,
-      cards: currCards,
-      keys: keyCard,
-      cardImage: images,
-    })
-
-    setCard({
-      img: image.src,
-      classes: 'animate',
-    })
-  }
-
+  const [cardActive, setCardActive] = useState(false)
+  
   return (
-    <div className={`card ${card.classes}`}>
+    <div className={cardActive ? 'card animate' : 'card'}>
       <img
-        className={card.classes}
-        src={card.img}
-        onClick={changeImage}
+        className={cardActive ? 'animate' : ''}
+        src={cardActive ? faceImgCard.src : coverImg}
+        onClick={(
+          () => click(cardActive, 
+            setCardActive,
+            faceImgCard.key)
+        )}
       />
     </div>
   )

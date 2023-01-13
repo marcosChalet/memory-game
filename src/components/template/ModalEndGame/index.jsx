@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-
 import './style.css'
+import { useEffect, useState } from 'react'
 
+import { MdClose } from 'react-icons/md';
 import Button from '../Button'
 
-function ModalEndGame() {
+function ModalEndGame({ children }) {
 
   const [modal, setModal] = useState()
 
@@ -19,8 +19,10 @@ function ModalEndGame() {
   return (
     <div className={`modal ${modal} container`}>
       <div className='content'>
-        <p>Você venceu!</p>
-        <Button click={btnClick} text='X' classes='restart' />
+        { children }
+        <Button click={btnClick} text='' classes='restart'>
+          <MdClose size={30} color="#F22" />
+        </Button>
       </div>
     </div>
   )

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
-
 import './style.css'
+import { useState } from 'react'
 
 import ModalEndGame from '../template/ModalEndGame'
 
@@ -27,76 +26,43 @@ const images = [
   {id: 12, key: 6, src: vue,     active: false},
 ].sort(() => Math.random() - 0.5)
 
-import coverImg from '../../assets/linux.svg'
-
 function Home() {
-
-  const [activeCard, setActiveCard] = useState({
-    totalActive: 0,
-    cards: [],
-    keys: [],
-    cardImage: [],
-  })
 
   const [endGame, setEndGame] = useState(false)
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      console.log(activeCard.totalActive)
-      if (activeCard.totalActive === 2 && activeCard.keys[0] === activeCard.keys[1]) {  
-        activeCard.cards[0]({
-          img: activeCard.cardImage[0],
-          classes: 'animate',
-          active: true,
-        })
+  let cardsToCompare = []
+  let count = 0
+  let stopTime = false
+  let totalActive = 0
 
-        activeCard.cards[1]({
-          img: activeCard.cardImage[1],
-          classes: 'animate',
-          active: true,
-        })
-
-        setActiveCard({
-          totalActive: 0,
-          cards: [],
-          keys: [],
-          cardImage: [],
-        })
-
-        const total = images.filter((img) => img.active).length
+  function click(cardActive, setCardActive, key) {
+    
+    if ( !cardActive && !stopTime ) {
+      setCardActive(true)
+      count++
+      totalActive++
+      cardsToCompare.push({cardActive, setCardActive, key})
       
-        if (total === 12) {
-          setEndGame(true)
-        }
-        
-      }else if (activeCard.totalActive === 2) {
-        activeCard.cards[0]({
-          img: coverImg,
-          classes: '',
-          active: false,
-        })
-        activeCard.cards[1]({
-          img: coverImg,
-          classes: '',
-          active: false,
-        })
-        setActiveCard({
-          totalActive: 0,
-          cards: [],
-          keys: [],
-          cardImage: [],
-        })
+      if (count === 2) {
+        stopTime = true
+        setTimeout(() => {
+          count = 0
+          if (cardsToCompare[0].key !== cardsToCompare[1].key) {
+            cardsToCompare[0].setCardActive(false)
+            cardsToCompare[1].setCardActive(false)
+            totalActive -= 2
+          }
+          cardsToCompare.pop()
+          cardsToCompare.pop()
+          stopTime = false
+
+          if (totalActive === images.length) {
+            setEndGame(true)
+          }
+        }, 1800);
       }
-    }, 2000);
-
-    return () => {
-      clearTimeout(timer)
     }
-  }, [activeCard])
-
-  useEffect(() => {
-    images.map(image => image.active = false)
-  }, [endGame])
+  }
 
   return (
     <div className="container">
@@ -104,14 +70,14 @@ function Home() {
       <div className='cards'>
         {images.map((image) => {
           return (
-            <Card key={image.id} image={image}
-              activeCard={activeCard}
-              setActiveCard={setActiveCard} 
+            <Card 
+              key={image.id}
+              faceImgCard={image}
+              click={click}
             />
           )
         })}
-
-        { endGame && <ModalEndGame /> }
+        { endGame && <ModalEndGame><h1>Você venceu!</h1></ModalEndGame> }
       </div>
     </div>
   )
