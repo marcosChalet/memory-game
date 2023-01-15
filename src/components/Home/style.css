@@ -83,7 +83,7 @@
 }
 
 .active {
-  filter: brightness(95%);
+  filter: brightness(100%);
 }
 
 .titleError {
