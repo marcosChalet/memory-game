@@ -6,7 +6,7 @@ import Button from '../Button'
 
 function ModalEndGame({ children }) {
 
-  const [modal, setModal] = useState()
+  const [modal, setModal] = useState('')
 
   useEffect(() => {
     setModal('show')
@@ -20,7 +20,7 @@ function ModalEndGame({ children }) {
   return (
     <div className={`modal ${modal} container`}>
       <div className='content'>
-        { children }
+        <div className="children">{ children }</div>
         <Button click={btnClick} text='' classes='restart'>
           <MdClose size={30} color="#F22" />
         </Button>

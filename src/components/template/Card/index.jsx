@@ -1,23 +1,16 @@
 import './style.css'
-import { useState } from 'react'
 
-import coverImg from '../../../assets/linux.svg'
+function Card({ children, img, cardClasses='', imgClasses='', click }) {
 
-function Card({ click, faceImgCard }) {
+  cardClasses += ' card'
 
-  const [cardActive, setCardActive] = useState(false)
-  
   return (
-    <div className={cardActive ? 'card animate' : 'card'}>
-      <img
-        className={cardActive ? 'animate' : ''}
-        src={cardActive ? faceImgCard.src : coverImg}
-        onClick={(
-          () => click(cardActive, 
-            setCardActive,
-            faceImgCard.key)
-        )}
-      />
+    <div 
+      className={cardClasses}
+      onClick={() => click && click()}
+    >
+      {img && <img className={imgClasses} src={img} />}
+      { children }
     </div>
   )
 }

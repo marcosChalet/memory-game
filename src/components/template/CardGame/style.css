@@ -1,0 +1,29 @@
+.card-game {
+  width: 160px;
+  height: 230px;
+  border: 1px solid transparent;
+  border-radius: .5rem;
+  transition: 1s ease;
+  background-color: var(--color-gray);
+}
+
+.card-game:hover {
+  border: 1px solid var(--color-white);
+}
+
+.animate {
+  transform: rotateY(180deg);
+}
+
+@media (min-width: 768px) {
+  .card-game {
+    height: 260px;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-game {
+    height: 280px;
+    width: 190px;
+  }
+}

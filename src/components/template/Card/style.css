@@ -1,23 +1,13 @@
 .card {
-  width: 160px;
-  height: 230px;
-  background-color: var(--color-gray);
-  transition: 1s ease;
-  border-radius: .5rem;
-}
-
-.card:hover {
-  border: 1px solid var(--color-white);
-}
-
-.animate {
-  transform: rotateY(180deg);
+  cursor: pointer;
+  padding: 1rem;
+  position: relative;
 }
 
 .card img {
   width: 100%;
   height: 100%;
   object-fit: fill;
-  cursor: pointer;
-  padding: 1rem;
+  user-select: none;
+  pointer-events: none;
 }

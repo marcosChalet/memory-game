@@ -1,25 +1,52 @@
+@font-face {
+  font-family: 'Hahmlet';
+  src: url('./assets/fonts/Hahmlet-SemiBold.ttf');
+}
+
 :root {  
   --color-black: #121010;
-  --color-black0: #000;
-  --color-white: #FFF;
+  --color-black0: #000000;
+  --color-white: #FFFFFF;
   --color-gray: #343434;
-  --color-blue: #0d61f3;
-  --light-color: #f2dede;
 
+  --color-gray-200: #f2dede;
+  --color-gray-400: #c2c2c2;
+  --color-red-700: #d7122e;
+  --color-red-800: #c50a0a;
+  --color-green-400: #abbb38;
+  --color-blue-400: #6262d7;
+  --color-purple-400: #8e33c1;
+  --color-gray-800: #171414;
+
+  --bg-color: var(--color-black);
   --primary-color: var(--color-black);
-  --text-color: var(--light-color);
+  --text-color: var(--color-gray-200);
+  --title-color: var(--color-gray-400);
 
   --default-font-size: 18px;
+
+  --font-family: 'Hahmlet', serif;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-transform: uppercase;
 }
 
 body {
   background-color: var(--primary-color);
   color: var(--text-color);
   font-size: var(--default-font-size);
+  font-family: var(--font-family);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--title-color);
 }
