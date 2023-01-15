@@ -16,10 +16,6 @@
   cursor: pointer;
 }
 
-.homeCard:hover {
-  border: 1px solid var(--color-white);
-}
-
 .homeCard h2, .homeCard h3 {
   font-size: 1rem;
   color: var(--text-color);
@@ -84,6 +80,7 @@
 
 .active {
   filter: brightness(100%);
+  border: 1.5px solid var(--color-white);
 }
 
 .titleError {
