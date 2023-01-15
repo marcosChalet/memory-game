@@ -40,7 +40,7 @@ function Game({ numCards }) {
   for (let i = 0; i < numCards; i++) {
     cards.push(images[i])
   }
-  cards.sort(() => Math.random() - 0.2)
+  cards.sort(() => Math.random() - 0.5)
 
   let cardsToCompare = []
   let countCards = 0
